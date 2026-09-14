@@ -16,11 +16,19 @@ As a CLI:
 
 ```
 $ python -m finediff.cli before.txt after.txt
+@@ -10,3 +10,3 @@
   def connect(host, port):
 -     client = Client(host, port, timeout=30)
 +     client = Client(host, port, timeout=60)
       return client
 ```
+
+Output is grouped into unified-diff style hunks, each with a
+`@@ -a,b +c,d @@` header giving the line ranges in the original and
+changed file. By default each hunk carries 3 lines of unchanged
+context on either side of a change; pass `-U N` / `--context N` to
+change that, or `--full` to print the whole file with no hunk
+splitting (the old default behaviour).
 
 In a real terminal the `-` line has the removed word coloured red and
 the `+` line has the added word coloured green; everything unchanged
@@ -60,5 +68,10 @@ producing the equal/delete/insert tags used for the inline highlight.
 
 ## Status
 
-Early. Line and word diffing both work; the CLI only prints a plain
-diff-like view. See the roadmap for what's missing.
+Early. Line and word diffing both work, and the CLI groups output into
+unified-diff style hunks with context. Still missing:
+
+- tests covering pairing of uneven replace blocks
+- reading from stdin for one file argument
+- a `--json` output mode for scripting
+- handling very large files without quadratic slowdown

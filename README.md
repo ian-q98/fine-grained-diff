@@ -71,7 +71,6 @@ producing the equal/delete/insert tags used for the inline highlight.
 Early. Line and word diffing both work, and the CLI groups output into
 unified-diff style hunks with context. Still missing:
 
-- tests covering pairing of uneven replace blocks
 - reading from stdin for one file argument
 - a `--json` output mode for scripting
 - handling very large files without quadratic slowdown
